@@ -1,0 +1,29 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="no">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>testnr</title>
+         <script src="{% static 'testnr/scripts.js' %}" defer></script>
+        <link rel="stylesheet" href="{% static 'testnr/styles.css' %}">
+        
+    </head>
+    <body class="bakgrunn">
+    <nav class="navbar">
+    <ul>
+      <li><a href="{% url 'testnr:index' %}">Hjem</a></li>
+      <li><a href="{% url 'testnr:leggtil' %}">Legg til legemiddel</a></li>
+      <li><a href="#">gjør regnskapet</a></li>
+      <li><a href="#">Kontakt</a></li>
+    </ul>
+    </nav>
+   
+    
+
+        {% block body %}
+        {% endblock %}
+    
+    </body>
+</html>

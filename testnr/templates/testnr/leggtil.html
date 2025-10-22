@@ -1,0 +1,12 @@
+{% extends "testnr/layout.html" %}
+
+{% block body %}
+    <h1>legg til legemiddel</h1>
+
+    <form>
+        <input type="text" name="legemiddel">
+        <input type="submit">
+
+    </form>
+    <a href="{% url 'testnr:index' %}">se legemiddler</a>
+{% endblock %}

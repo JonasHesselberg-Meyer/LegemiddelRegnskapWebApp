@@ -1,0 +1,58 @@
+{% extends "testnr/layout.html" %}
+
+{% block body %}
+    <h1>{{ legemiddelinfo.name }}</h1>
+    <h2>{{ nybeholdning }}</h2>
+    
+    <h2>Beholdning: {{ legemiddelinfo.beholdning }}</h2>
+    <form action="{% url 'testnr:ta_ut' legemiddelinfo.name %}" method="post">
+        {% csrf_token %}
+        <input  type="text" name="ta_ut" placeholder="Antall tabletter">
+       
+        <input type="submit">
+        
+        <input value="1" id="switch" name="bool" type="hidden" placeholder="1 = ta ut  2 = legg til">
+
+    </form>
+     <button onclick="taUTelleruttak()" id="trykkKnapp">Uttak</button>
+    <br>
+    <br>
+    <br>
+    <label id="label">hvor mye vil du ta ut?</label>
+    <br>
+    <button id="knapp">valider :)</button>
+    <input id="tekstfelt" type="text" placeholder="hei">
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <a href="{% url 'testnr:index' %}">se legemiddler</a>
+    <script>
+        
+    
+        let validerInputKnapp = document.getElementById("knapp")
+        let tekstfelt = document.getElementById("tekstfelt")
+        let labelTilbakemelding = document.getElementById("label")
+
+        validerInputKnapp.onmouseover=validerInput;
+
+        function validerInput(){
+            console.log(tekstfelt.value.trim())
+            if(tekstfelt.value===""){                
+                labelTilbakemelding.innerHTML ="feltet kan ikke være tomt"
+
+            } else if(tekstfelt.value === "jonas"){
+            
+            labelTilbakemelding.innerHTML = "feltet er perfekt!"
+
+            } else {
+                labelTilbakemelding.innerHTML = `feltet er: ${tekstfelt.value} men det er ikke bra nok`;
+            }
+
+
+}
+
+    </script>
+    
+{% endblock %}

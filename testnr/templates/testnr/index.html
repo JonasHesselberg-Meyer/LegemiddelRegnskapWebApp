@@ -1,0 +1,35 @@
+{% extends "testnr/layout.html" %}
+
+{% block body %}
+    <h1 id="overskrift">NR regnskappppp</h1>
+    <input type="text" id="søkefelt" placeholder="Søk her" >
+    <div class="animasjonsBox">
+        
+        <div class="animasjon"></div>
+            <div id="container">
+                
+                <ul id="legemiddelListe" class="legemiddelVelger">
+                    {% for legemiddel in legemiddler %}
+                        <li class="legemiddelVelger">
+                            <div class="legemiddelVelger" ><a class="legemiddelVelger" href="legemiddel/{{ legemiddel }}"><p id="navn">{{ legemiddel }}</p></a></div>
+                      
+                        </li>
+                    {% endfor %}
+             
+                </ul>
+        
+        
+
+
+
+                <div>halla mannen</div>
+                <a href="{% url 'testnr:leggtil' %}">legg til et legemiddel</a>
+                <button onclick="velkommenHilsen()">Click me!</button>
+        
+
+            </div>
+            <div class="animasjon"></div>
+    </div>
+    
+{% endblock %}
+

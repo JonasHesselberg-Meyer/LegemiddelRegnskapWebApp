@@ -1,0 +1,162 @@
+body {
+    font-family: sans-serif;
+}
+
+
+
+.bakgrunn {
+    background-color: #b3cbe4;
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+    
+    
+}
+
+.animasjonsBox{
+    border: solid 2px black;
+    width: 1000px;
+    height: 600px;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    margin-top: 100px;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    
+
+
+}
+.animasjon{
+  border: solid black 2px;
+  height: 600px;
+  width: 190px;
+  
+  
+}
+
+#container {
+        
+        
+        background-color: aliceblue;
+        padding: 30px;
+        box-shadow: 0px 4px 20px rgba(55, 111, 196, 0.1);
+        border-radius: 10px;
+        width: 500px ;
+        height: 500px;
+        
+    
+        overflow-y: auto;
+        
+        
+        
+        
+    }
+
+#overskrift {
+    font-size: 20px;
+    
+    
+    text-align: center;
+
+}
+
+    
+
+
+.legemiddelVelger{
+background-color: aliceblue;
+list-style:none;
+transition-duration: 1s;
+
+
+
+
+
+}
+    li.legemiddelVelger {
+        background-color:rgba(0, 183, 255, 0.514);
+        padding: 5px;
+        display: flex;
+        justify-content: center;
+      
+        margin: 10px;
+        width: 400px;
+        border-radius: 5px;
+
+    }
+    a.legemiddelVelger {
+        text-decoration: none;
+        padding: 2px;
+        border-radius: 5px;
+        margin: 2px;
+        font-size: large;
+        font-weight: bolder;
+        width: 250px;
+
+    }
+    
+    div.legemiddelVelger {
+        padding: 5px;
+        margin-left: 10px;
+        margin-right: 10px;
+        display: inline-flex;
+        border-radius: 10px;
+        justify-content: center;
+        width: 90%;
+    }
+
+    ul.legemiddelVelger {
+        background-color: aqua;
+        border-radius: 10px;
+        padding: 20px;
+        border: solid, black, 2px;
+  
+
+    }
+
+    a.legemiddelVelger:hover{
+      transform: scale(1.1);
+
+    }
+
+
+
+
+.navbar {
+      background-color: #333;
+      padding: 10px 20px;
+      border-radius: 20px;
+    }
+
+    /* Fjerner prikker og setter alt i linje */
+    .navbar ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center; /* Sentraliserer menyen */
+      
+    }
+
+    /* Avstand mellom linker */
+    .navbar li {
+      margin: 0 15px;
+    }
+
+    /* Styling av linkene */
+    .navbar a {
+      text-decoration: none;
+      color: white;
+      font-size: 18px;
+      padding: 5px 10px;
+      transition: background 0.3s;
+    }
+
+    /* Hover-effekt */
+    .navbar a:hover {
+      background-color: #555;
+      border-radius: 5px;
+    }
