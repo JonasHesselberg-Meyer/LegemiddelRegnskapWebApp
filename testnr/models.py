@@ -7,8 +7,16 @@ class Legemiddel(models.Model):
     beholdning = models.PositiveIntegerField(default=0)
 
     def __str__(self):
-        return f"ID:{self.id} Legemiddel:{self.name}"
+        return f"{self.name}"
     
+
+class Sykepleier(models.Model):
+    signatur = models.CharField(max_length= 6, primary_key=True)
+    fulltNavn = models.CharField(max_length= 64)
+    pin = models.CharField(max_length= 4)
+    
+    def __str__(self):
+        return f"{self.signatur}"
 
 #class Lager(models.Model):
     #lm_lager= models.ForeignKey(Legemiddel, on_delete=models.CASCADE, related_name="legemiddel")

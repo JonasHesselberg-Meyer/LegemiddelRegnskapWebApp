@@ -8,7 +8,8 @@
     <form action="{% url 'testnr:ta_ut' legemiddelinfo.name %}" method="post">
         {% csrf_token %}
         <input  type="text" name="ta_ut" placeholder="Antall tabletter">
-       
+        <input  type="text" name="signatur" placeholder="signatur">
+        <input  type="text" name="pin" placeholder="pin">
         <input type="submit">
         
         <input value="1" id="switch" name="bool" type="hidden" placeholder="1 = ta ut  2 = legg til">

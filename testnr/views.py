@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 
-from .models import Legemiddel
+from .models import Legemiddel, Sykepleier
 # Create your views here.
 
 
@@ -33,32 +33,51 @@ def legemiddelside(request,legemiddel_navn):
     print("hei")
      
 
-def ta_ut(request,legemiddel_navn):#funkjer ikke
+def ta_ut(request,legemiddel_navn):
         if request.method == "POST":
-            
-            print(legemiddel_navn)
-            taUtEllerUttak= "trykk 1 eller 2"
+            signaturLogin = request.POST["signatur"].lower()
+            pinLogin = request.POST["pin"]
+            print(signaturLogin)
+
+            alleBrukere = Sykepleier.objects.values_list("signatur", flat=True)
+            print(alleBrukere)
+
             uttakLegemiddel = request.POST["ta_ut"]
             produkt=Legemiddel.objects.get(name=legemiddel_navn)
-            if request.POST["bool"] == "1":
-                produkt.beholdning -= int(uttakLegemiddel)
-                produkt.save()
-                taUtEllerUttak = f"Du tok ut: {uttakLegemiddel} "
-            if request.POST["bool"] == "2":
-                produkt.beholdning += int(uttakLegemiddel)
-                produkt.save()
-                taUtEllerUttak = f"Du la til: {uttakLegemiddel} "
-            print(produkt.beholdning)
             
-            #produkt.beholdning -= 
             
+            if signaturLogin in alleBrukere:
+                print("signatur funnet i databasen")
+                signaturDatabase = Sykepleier.objects.get(signatur=signaturLogin)
+                
+                if pinLogin == signaturDatabase.pin:
+                    print("suksess!!")
+     
+            
+                    if request.POST["bool"] == "1":
+                        produkt.beholdning -= int(uttakLegemiddel)
+                        produkt.save()
+                        tilbakeMelding = f"Du tok ut: {uttakLegemiddel} "
+                    if request.POST["bool"] == "2":
+                        produkt.beholdning += int(uttakLegemiddel)
+                        produkt.save()
+                        tilbakeMelding = f"Du la til: {uttakLegemiddel} "
+                else:
+                    tilbakeMelding = "feil signatur"
+            else:
+                tilbakeMelding = "feil signatur"
+            
+                
             return render(request, "testnr/legemiddelside.html",{"legemiddelnavn":legemiddel_navn,
                                                              "legemiddelinfo":Legemiddel.objects.get(name=legemiddel_navn),
-                                                             "nybeholdning":taUtEllerUttak})
-        #else:
-            #return render(request, "testnr/legemiddelside.html")
-             
-
-   # Example: Get a row where id=1
-#row = MyModel.objects.get(id=1)
-#specific_value = row.field_name  # Replace 'field_name' with the desired field
+                                                             "nybeholdning":tilbakeMelding})
+            
+            #return render(request, "testnr/legemiddelside.html",{"tilbakemelding":"feil Login"})
+            
+       
+       
+       
+       
+       
+       
+     
