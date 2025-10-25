@@ -1,9 +1,9 @@
 
 
 const søkefeltVerdi = document.getElementById("søkefelt");
-const legemiddelListe = document.querySelectorAll("#legemiddelListe li");
+const legemiddelListe = document.querySelectorAll(".list li");
 
-
+console.log(legemiddelListe)
 
 
 søkefeltVerdi.addEventListener("input",() => {

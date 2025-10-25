@@ -5,30 +5,48 @@
     <input type="text" id="søkefelt" placeholder="Søk her" >
     <div class="animasjonsBox">
         
-        <div class="animasjon"></div>
+        
             <div id="container">
-                
+                <!--
                 <ul id="legemiddelListe" class="legemiddelVelger">
                     {% for legemiddel in legemiddler %}
                         <li class="legemiddelVelger">
-                            <div class="legemiddelVelger" ><a class="legemiddelVelger" href="legemiddel/{{ legemiddel }}"><p id="navn">{{ legemiddel }}</p></a></div>
+                            <div class="legemiddelVelger" >
+                                <a class="legemiddelVelger" href="legemiddel/{{ legemiddel }}">
+                                    <p id="navn">
+                                        {{ legemiddel }}
+                                    </p>
+                                </a>
+                            </div>
                       
                         </li>
                     {% endfor %}
              
                 </ul>
+                -->
+                <div class="list">
+                    <h2>Velg Legemiddel</h2>
+                    <ul>
+                        {% for legemiddel in legemiddler %}
+                        <li >
+                            
+                                <a href="legemiddel/{{ legemiddel }}">
+                                    <span id="navn">
+                                        {{ legemiddel.capitalize }}
+                                    </span>
+                                </a>
+                            
+                      
+                        </li>
+                        {% endfor %}
+                        
+                    </ul>
+                    </div>
         
-        
-
-
-
-                <div>halla mannen</div>
-                <a href="{% url 'testnr:leggtil' %}">legg til et legemiddel</a>
-                <button onclick="velkommenHilsen()">Click me!</button>
         
 
             </div>
-            <div class="animasjon"></div>
+            
     </div>
     
 {% endblock %}
