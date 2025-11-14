@@ -6,20 +6,34 @@ body {
 
 
 .bakgrunn {
-    background-color: #b3cbe4;
+    
     margin: 0px;
     padding: 0px;
     text-align: center;
-    height: 100%;
+    height: 100vh;
     width: 100%;
     position: absolute;
+    object-fit: cover;
+    border: solid black 5px;
+    box-sizing: border-box;
+
     
     
 }
+.bakgrunn img{
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: -1;
+  object-fit: cover;
+  
+}
 
 .animasjonsBox{
-    border: solid 2px black;
-    width: 70%;
+    
+    width: 90%;
     height: 70%;
     position: absolute;
     top: 50%;
@@ -30,100 +44,62 @@ body {
     justify-content: center;
     align-items: center;
     
+    
+    
 
 
 }
 
 
-#container {
+.container {
         
-        
-        background-color: rgb(22, 24, 26);
+        border: solid 10px aqua;
+        background-color: aliceblue;
         padding: 10px;
        
         border-radius: 10px;
-        width: 90% ;
+        width: 50% ;
         height: 80%;
         display: flex;
         justify-content: center;
         align-items: flex-start;
     
         overflow-y:scroll;
-
-      
-        
-        
-        
-        
-    }
-
-#overskrift {
-    font-size: 20px;
     
-    
-    text-align: center;
-
+        
 }
-
-    
-
-
-.legemiddelVelger{
-background-color: aliceblue;
-list-style:none;
-transition-duration: 1s;
-
-
-}
-    li.legemiddelVelger {
-        background-color:rgba(0, 183, 255, 0.514);
-        padding: 5px;
-        display: flex;
-        
-      
-        margin: 10px;
-        width: 400px;
-        border-radius: 5px;
-
-    }
-    a.legemiddelVelger {
-        text-decoration: none;
-        padding: 2px;
-        border-radius: 5px;
-        margin: 2px;
-        font-size: large;
-        font-weight: bolder;
-        width: 250px;
-
-    }
-    
-    div.legemiddelVelger {
-        padding: 5px;
-        margin-left: 10px;
-        margin-right: 10px;
-        display: inline-flex;
-        border-radius: 10px;
-        justify-content: center;
-        width: 90%;
-    }
-
-    ul.legemiddelVelger {
-        background-color: aqua;
-        border-radius: 10px;
-        padding: 10px;
-        border: solid, black, 2px;
-        justify-content: center;
-        align-items: flex-start;
-        top: 50%;
-        
+.infoTavle{
+  background-color: white;
+  position: absolute;
+  transform: translate(-50%,-50%);
+  left: 50%;
+  top: 20vh;
+  display: block;
+  height: 20vh;
   
+  
+  border: solid aqua 5px;
+  border-radius: 10px;
+}
 
-    }
 
-    a.legemiddelVelger:hover{
-      transform: scale(1.1);
 
-    }
+
+    
+
+#søkefelt {
+  position: absolute;
+  transform: translate(-50%,-50%);
+  width: 30%;
+  height: 50px;
+  top: 20%;
+  left: 50%;
+  font-size: larger;
+  text-align: center;
+  border: solid 5px aqua;
+
+}
+
 
 
 
@@ -133,6 +109,7 @@ transition-duration: 1s;
       padding: 10px 20px;
       border-radius: 20px;
       margin: 5px;
+      color: white;
     }
 
     /* Fjerner prikker og setter alt i linje */
@@ -169,9 +146,10 @@ transition-duration: 1s;
 
 .list {
   position: relative;
+  color: black;
 }
 .list h2 {
-  color: #fff;
+  
   font-weight: 700;
   letter-spacing: 1px;
   margin-bottom: 10px;
@@ -182,10 +160,10 @@ transition-duration: 1s;
 .list ul li {
   position: relative;
   left: 0;
-  color: #fce4ec;
+  color: black;
   list-style: none;
   margin: 4px 0;
-  border-left: 2px solid #f50057;
+  border-left: 5px solid aqua;
   transition: 0.5s;
   cursor: pointer;
 }
@@ -196,7 +174,8 @@ transition-duration: 1s;
   position: relative;
   padding: 8px;
   padding-left: 12px;
-  display: inline-block;
+  display: flex;
+  justify-content: flex-start;
   z-index: 1;
   transition: 0.5s;
   font-size:x-large;
@@ -209,13 +188,15 @@ transition-duration: 1s;
   position: absolute;
   width: 100%;
   height: 100%;
-  background: #f50057;
+  left: 0%;
+  background: aqua;
   transform: scaleX(0);
   transform-origin: left;
   transition: 0.5s;
 }
 .list ul li:hover:before {
-  transform: scaleX(1);
+  transform:  scaleX(1);
+  
 }
 
 
@@ -231,3 +212,274 @@ a:active {
   color: inherit;
   text-decoration: none;
 }
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: white; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: aqua;
+  
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: white; 
+}
+
+.loggcontainer{
+  box-sizing: border-box;
+  height: 75%;
+  width: 80vw;
+  background-color: white;
+  padding: 0px;
+  border: solid aqua 5px;
+  margin: 20px;
+  border-radius: 10px;
+  overflow: scroll;
+}
+
+.loggcontainer ul{
+  list-style: none;
+  
+  padding-inline-start: 0px;
+}
+.loggcontainer li:first-child{
+  border-top: solid aqua 4px;
+}
+
+.loggcontainer li{
+  border-bottom: solid aqua 4px;
+  height: 60px;
+  
+  
+  
+
+}
+.loggBruker{
+  width: 70px;
+  
+}
+.loggTidspunkt{
+  width: 80px;
+  
+}
+
+.loggBeholdningSlutt,.loggBeholdningStart,.loggPreparat{
+  width: 140px;
+  
+}
+
+.loggLager{
+  width: 280px;
+  
+  
+  word-break: break-word;
+}
+
+.loggKommentar{
+  width: 250px;
+  overflow:scroll;
+  word-break: break-word;
+}
+
+.loggObjekt{
+  box-sizing: border-box;
+  border-left: solid aqua 4px;
+  height: 60px;
+  text-align: center;
+  padding: 2px;
+  display: inline-flex;
+  align-items:flex-start;
+  justify-content: center;
+  background-color: white;
+  border-radius: 4px;
+  padding-top: 4px;
+  
+}
+
+.loggObjekt:first-child{
+  border-left: none;
+}
+.loggsObjekt:last-child{
+  border-right: solid aqua 4px;
+}
+
+
+
+.containerLegemiddel {
+        
+        
+        background-color: white;
+        padding: 10px;
+        border: solid aqua 5px;
+        border-radius: 10px;
+        width: 30% ;
+        height: 70%;
+        overflow: scroll;
+        display: flex;
+        flex-direction: column;
+        
+        justify-content: flex-start;
+        
+        align-content: flex-start;
+   
+        
+}
+::placeholder {
+  color: black;
+  font-family: sans-serif;
+  opacity: 0.5;
+  text-align: center;
+}
+
+.containerLegemiddel form {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 10px;
+  
+  font-size: larger;
+}
+
+.containerLegemiddel label {
+  background-color: aqua;
+  display: block;
+}
+
+.containerLegemiddel input[type=text], input[type=number],input[type="password"], select {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 2px solid aqua;
+  border-radius: 4px;
+  box-sizing: border-box;
+  text-align: center;
+  font-size: medium;
+  font-weight: bolder;
+}
+.containerLegemiddel textarea {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 2px solid aqua;
+  border-radius: 4px;
+  box-sizing: border-box;
+  text-align: center;
+  font-size: large;
+  
+}
+
+.containerLegemiddel input[type=submit] {
+  width: 100%;
+  background-color: aqua;
+  color: black;
+  padding: 14px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.containerLegemiddel input[type=submit]:hover {
+  background-color: white;
+}
+.containerLegemiddel button{
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 2px solid aqua;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: larger;
+  font-weight: bolder;
+  background-color: aqua;
+
+}
+
+.containerLegemiddel button:hover{
+  background-color: white;
+
+}
+
+
+.radioButtonForm {
+  width: 90%;
+  position: relative;
+  margin: 10px auto 0;
+  font-size: 15px;
+  display: flex;
+  justify-content: center;
+}
+
+.radiobtn {
+  position: relative;
+  display: block;
+  width: 250px;
+}
+.radiobtn label {
+  display: flex;
+  background: white;
+  color: #444;
+  border-radius: 5px;
+  padding: 10px 20px;
+  border: 2px solid aqua;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+.radiobtn label:after, .radiobtn label:before {
+  content: "";
+  position: absolute;
+  right: 11px;
+  top: 11px;
+  width: 20px;
+  height: 20px;
+  border-radius: 3px;
+  background: white;
+  
+  
+  
+}
+.radiobtn label:before {
+  background: transparent;
+  transition: 0.1s width cubic-bezier(0.075, 0.82, 0.165, 1) 0s, 0.3s height cubic-bezier(0.075, 0.82, 0.165, 2) 0.1s;
+  z-index: 2;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-size: 13px;
+  background-position: center;
+  width: 0;
+  height: 0;
+  
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNS4zIDEzLjIiPiAgPHBhdGggZmlsbD0iI2ZmZiIgZD0iTTE0LjcuOGwtLjQtLjRhMS43IDEuNyAwIDAgMC0yLjMuMUw1LjIgOC4yIDMgNi40YTEuNyAxLjcgMCAwIDAtMi4zLjFMLjQgN2ExLjcgMS43IDAgMCAwIC4xIDIuM2wzLjggMy41YTEuNyAxLjcgMCAwIDAgMi40LS4xTDE1IDMuMWExLjcgMS43IDAgMCAwLS4yLTIuM3oiIGRhdGEtbmFtZT0iUGZhZCA0Ii8+PC9zdmc+);
+}
+.radiobtn input[type=radio] {
+  display: none;
+  position: absolute;
+  width: 100%;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+.radiobtn input[type=radio]:checked + label {
+  background: aqua;
+  
+  border-color: aqua;
+}
+.radiobtn input[type=radio]:checked + label:after {
+  background: aqua;
+  border: solid black 1px;
+}
+.radiobtn input[type=radio]:checked + label:before {
+  width: 20px;
+  height: 20px;
+}
+

@@ -4,13 +4,15 @@ const søkefeltVerdi = document.getElementById("søkefelt");
 const legemiddelListe = document.querySelectorAll(".list li");
 
 console.log(legemiddelListe)
-
+legemiddelListe.forEach(item=>{
+    console.log(item.textContent)
+})
 
 søkefeltVerdi.addEventListener("input",() => {
     
 
     legemiddelListe.forEach(item => {
-        let legemiddelNavn = item.textContent;
+        let legemiddelNavn = item.textContent.toLowerCase();
         
             if(legemiddelNavn.includes(søkefeltVerdi.value.toLowerCase())){
                 item.style.display = ""

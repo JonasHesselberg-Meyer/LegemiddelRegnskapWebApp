@@ -1,58 +1,119 @@
 {% extends "testnr/layout.html" %}
 
 {% block body %}
-    <h1>{{ legemiddelinfo.name }}</h1>
-    <h2>{{ nybeholdning }}</h2>
     
-    <h2>Beholdning: {{ legemiddelinfo.beholdning }}</h2>
-    <form action="{% url 'testnr:ta_ut' legemiddelinfo.name %}" method="post">
-        {% csrf_token %}
-        <input  type="text" name="ta_ut" placeholder="Antall tabletter">
-        <input  type="text" name="signatur" placeholder="signatur">
-        <input  type="text" name="pin" placeholder="pin">
-        <input type="submit">
-        
-        <input value="1" id="switch" name="bool" type="hidden" placeholder="1 = ta ut  2 = legg til">
+    <div class="infoTavle">
+        <h1 class="overskrift">{{ legemiddelinfo.preparat}}</h1>
+        <h2>{{ legemiddelinfo.lager }}</h2>
+        <h2>{{ tilbakemelding }}</h2>
+        <h2 >Beholdning:<label id="databaseBeholdning">{{ legemiddelinfo.beholdning }}</label></h2>
 
-    </form>
-     <button onclick="taUTelleruttak()" id="trykkKnapp">Uttak</button>
-    <br>
-    <br>
-    <br>
-    <label id="label">hvor mye vil du ta ut?</label>
-    <br>
-    <button id="knapp">valider :)</button>
-    <input id="tekstfelt" type="text" placeholder="hei">
-    <br>
-    <br>
-    <br>
-    <br>
 
-    <a href="{% url 'testnr:index' %}">se legemiddler</a>
-    <script>
-        
-    
-        let validerInputKnapp = document.getElementById("knapp")
-        let tekstfelt = document.getElementById("tekstfelt")
-        let labelTilbakemelding = document.getElementById("label")
+    </div>
+    <div class="animasjonsBox">
 
-        validerInputKnapp.onmouseover=validerInput;
-
-        function validerInput(){
-            console.log(tekstfelt.value.trim())
-            if(tekstfelt.value===""){                
-                labelTilbakemelding.innerHTML ="feltet kan ikke være tomt"
-
-            } else if(tekstfelt.value === "jonas"){
             
-            labelTilbakemelding.innerHTML = "feltet er perfekt!"
+            <div class=containerLegemiddel>
+                        
+                        
+                        
+                        <form action="{% url 'testnr:ta_ut' legemiddelnavn %}" method="post">
+                            {% csrf_token %}
+                        <div class="radioButtonForm">
+                            <div class="radiobtn">
+                                <input type="radio" id="uttak"
+                                            name="radioButton" value="1" checked />
+                                <label for="uttak">Uttak</label>
+                            </div>
 
-            } else {
-                labelTilbakemelding.innerHTML = `feltet er: ${tekstfelt.value} men det er ikke bra nok`;
-            }
+                            <div class="radiobtn">
+                                <input type="radio" id="leggTil"
+                                            name="radioButton" value="2" />
+                                <label for="leggTil">Legg inn</label>
+                            </div>
+
+                    
+                        </div>
+
+                        <label for="startBeholdning">Beholdning før transkasjon</label>
+                        <input id="startBeholdning" type="number" min="0" name="startBeholdning" placeholder="Beholdning før transkasjon" value={{ legemiddelinfo.beholdning }} required>
+
+                        <label for="antallLegemiddel">Antall tabletter</label>
+                        <input  type="number" min="0" name="antallLegemiddel" placeholder="Antall tabletter" value="1" required>
+                        
+                        
+
+                        <label for="signatur">Signatur</label>
+                        <input  type="text" name="signatur" placeholder="Signatur" value="johess" required>
+
+                        <label for="pin">Pin</label>
+                        <input  type="password" name="pin" placeholder="pin" value="" required>
+
+                        <label for="kommentar">Kommentar</label>
+                        <textarea name="kommentar" placeholder="Kommentar" rows="2" cols="20"></textarea>
+                      
+                        
+                        <input type="submit" value="Submit">
+                        </form>
+                        
+                    
+            </div>
+            <div class="loggcontainer">
+                <ul>
+                {% for objekt in loggObjekt %}
+                        <li >
+                                    <span class="loggTidspunkt loggObjekt">{{ objekt.tidspunkt|date:"d/m/Y H:i" }}</span>
+                                    <span class="loggLager loggObjekt">{{ objekt.lager }}</span>
+                                    <span class="loggPreparat loggObjekt">{{ objekt.preparat }}</span>
+                                    <span class="loggObjekt loggBruker ">{{ objekt.bruker }}</span>
+                                    <span class="loggBeholdningStart loggObjekt">Beholdning start:  {{ objekt.preparatbeholdningStart }}</span>
+                                    <span class="loggBeholdningSlutt loggObjekt">Ny beholdning: {{ objekt.preparatbeholdningSlutt }}</span>
+                                    <span class="loggKommentar loggObjekt">{{ objekt.kommentar }}</span>                                 
+                                   
+                            
+                      
+                        </li>
+                {% endfor %}
+                </ul>
+            </div>
+           
+    </div>
+    <script>
+        const startBeholdning = document.getElementById("startBeholdning")
+        const tallVerdiStartBeholdning =parseInt(startBeholdning.value)
+
+        const databaseBeholdning= document.getElementById("databaseBeholdning")
+        const tallVerdiDatabaseBeholdning = parseInt(databaseBeholdning.textContent)
+        
+
+        let likVerdi=true
+        let pauseAlert=false
+
+        startBeholdning.addEventListener("input",() => {
+                let redigertStartBeholdning = document.getElementById("startBeholdning")
+                if (parseInt(redigertStartBeholdning.value)===tallVerdiDatabaseBeholdning){
+                            startBeholdning.style.backgroundColor ="white"
+                            likVerdi=true
+                            
+                    }
+                else{
+                        if(likVerdi){
+                        alert(`ulik verdi på sist registrerte beholdning og start beholdning! forige registrerte beholdinger er:${databaseBeholdning.textContent}`)
+                        likVerdi=false
+                        startBeholdning.style.backgroundColor ="red"
+                                        }
+                    }        
+
+                })
+
+       
 
 
-}
+
+
+        if (window.history.replaceState) {
+            window.history.replaceState(null, null, window.location.href);
+        }
 
     </script>
     

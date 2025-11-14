@@ -1,38 +1,27 @@
 {% extends "testnr/layout.html" %}
 
 {% block body %}
-    <h1 id="overskrift">NR regnskappppp</h1>
+    <h1 class="overskrift">NR regnskap</h1>
+    <h2 class="overskrift">{{ tilbakemelding }}</h2>
     <input type="text" id="søkefelt" placeholder="Søk her" >
     <div class="animasjonsBox">
         
         
-            <div id="container">
-                <!--
-                <ul id="legemiddelListe" class="legemiddelVelger">
-                    {% for legemiddel in legemiddler %}
-                        <li class="legemiddelVelger">
-                            <div class="legemiddelVelger" >
-                                <a class="legemiddelVelger" href="legemiddel/{{ legemiddel }}">
-                                    <p id="navn">
-                                        {{ legemiddel }}
-                                    </p>
-                                </a>
-                            </div>
-                      
-                        </li>
-                    {% endfor %}
-             
-                </ul>
-                -->
+            <div class="container" >
+            
+                
                 <div class="list">
                     <h2>Velg Legemiddel</h2>
+                    
                     <ul>
-                        {% for legemiddel in legemiddler %}
+                    
+                        
+                        {% for legemiddel in lager %}
                         <li >
                             
-                                <a href="legemiddel/{{ legemiddel }}">
+                                <a href="legemiddel/{{ legemiddel.preparat }}">
                                     <span id="navn">
-                                        {{ legemiddel.capitalize }}
+                                        {{ legemiddel.preparat }}
                                     </span>
                                 </a>
                             
@@ -41,12 +30,12 @@
                         {% endfor %}
                         
                     </ul>
-                    </div>
-        
+                </div>
+                
         
 
             </div>
-            
+
     </div>
     
 {% endblock %}
